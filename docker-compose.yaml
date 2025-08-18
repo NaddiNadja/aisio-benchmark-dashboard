@@ -23,6 +23,39 @@ services:
     environment:
       - GF_PLUGINS_PREINSTALL=yesoreyeram-infinity-datasource
 
+  posix:
+    build:
+      context: ./data-server
+      args:
+        SOURCE: posix
+    container_name: posix
+    ports:
+      - "4000:4000"
+    networks:
+      - internal
+
+  gds:
+    build:
+      context: ./data-server
+      args:
+        SOURCE: gds
+    container_name: gds
+    ports:
+      - "4001:4000"
+    networks:
+      - internal
+
+  aisio:
+    build:
+      context: ./data-server
+      args:
+        SOURCE: aisio
+    container_name: aisio
+    ports:
+      - "4002:4000"
+    networks:
+      - internal
+
   nginx:
     image: nginx:latest
     container_name: nginx
@@ -34,8 +67,15 @@ services:
     depends_on:
       - dashboard
       - grafana
+      - posix
+      - gds
+      - aisio
     networks:
       - internal
+    # extra_hosts:
+    #   - posix:${POSIX_HOST}
+    #   - gds:${GDS_HOST}
+    #   - aisio:${AISIO_HOST}
 
 networks:
   internal:
