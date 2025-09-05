@@ -1,6 +1,6 @@
 body {
-  color: rgb(204, 204, 220);
-  background-color: rgb(17, 18, 23);
+  background-color: white;
+  color: rgb(17, 18, 23);
 }
 
 iframe { 
@@ -9,11 +9,16 @@ iframe {
 
 .main-grid {
   display:grid;
-  grid-template-columns: [content-start] 500px 500px [content-end];
+  grid-template-columns: [content-start] 700px 700px [content-end];
   gap: 10px;
   justify-content: center;
 }
 
 .main-grid > .wide {
   grid-column: content;
+}
+
+iframe {
+  width: 100%;
+  height: 823px;
 }

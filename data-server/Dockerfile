@@ -1,13 +1,12 @@
 # syntax=docker/dockerfile:1
 FROM python:3.11.13-bookworm
 
-ARG SOURCE
-
 WORKDIR /app
 
 COPY . .
-RUN cp /app/data/${SOURCE}.csv /app/data.csv
-RUN cp /app/data/${SOURCE}.csv /app/pregenerated.csv
+RUN echo "Time, Batches, IOPS, MiB/s\n0, 0, 0, 0" > posix.csv
+RUN echo "Time, Batches, IOPS, MiB/s\n0, 0, 0, 0" > gds.csv
+RUN echo "Time, Batches, IOPS, MiB/s\n0, 0, 0, 0" > aisio.csv
 
 RUN pip install -r requirements.txt
 
