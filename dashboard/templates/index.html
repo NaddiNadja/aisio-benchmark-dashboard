@@ -10,31 +10,29 @@
     <title>AiSiO benchmark</title>
     <script>
       function reset() {
-        fetch("http://localhost/reset");
+        fetch("/reset");
       }
     </script>
   </head>
   <body class="main-grid">
-    <h1>Helloooooooooo</h1>
-
       <section class="wide">
         <iframe
           id="benchmark-dashboard"
-          src="http://localhost/grafana/d/c83d24b6-3bf5-4963-9a71-6f1676d75f0e/aisio-benchmark"
-          width="1000"
-          height="370"
+          src="/grafana/d/c83d24b6-3bf5-4963-9a71-6f1676d75f0e/aisio-benchmark"
         ></iframe>
-        <button onclick="reset()">Reset</button>
         <script>
           const iframe = document.getElementById("benchmark-dashboard");
           iframe.onload = () => {
             const doc = iframe.contentDocument || iframe.contentWindow.document;
             const style = doc.createElement("style");
             style.innerHTML = `
+            body { background: white; }
+            .grafana-app * { pointer-events: none; }
             .grafana-app header { display: none; }
             .grafana-app .main-view > div { padding-top: 0px !important; }
             .grafana-app div[style*="transition: width 1s"] { transition: width 0.5s linear !important; }
             .grafana-app div[class*="canvas-wrapper-old"] > div { background: transparent; }
+            .grafana-app #\\31 3  section > div:last-child > div, #\\39  section > div:last-child > div, #\\35  section > div:last-child > div { border: 1px solid #DDD }
             `;
             doc.head.appendChild(style);
           };

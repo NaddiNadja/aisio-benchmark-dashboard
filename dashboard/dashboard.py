@@ -34,7 +34,7 @@ def setupLogging():
     logFormatter = log.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
     rootLogger = log.getLogger()
 
-    fileHandler = log.FileHandler("./data-source.log")
+    fileHandler = log.FileHandler("./dashboard.log")
     fileHandler.setFormatter(logFormatter)
     fileHandler.setLevel(log.INFO)
     rootLogger.addHandler(fileHandler)

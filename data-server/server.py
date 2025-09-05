@@ -4,14 +4,11 @@ from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 from flask import Flask, Response, request
 from pandas import read_csv
 from pathlib import Path
-from time import sleep
-from threading import Thread
 
 
 app = Flask(__name__)
 
-DATA_PATH: Path = Path("./data.csv")
-PREGENERATED_DATA_PATH: Path = Path("./pregenerated.csv")
+DATA_PATH: Path = Path(".")
 TIME_COLUMN: str = "Time"
 
 
@@ -20,13 +17,14 @@ def get_data():
     global DATA_PATH, TIME_COLUMN
 
     try:
-        from_s = (request.args.get("from", type=int) or 0) / 1000
-        to_s = (request.args.get("to", type=int) or 0) / 1000
+        data = request.args.get("source", type=str).lower()
+        if data not in ["posix", "gds", "aisio"]:
+            log.error("Wrong source")
+            return Response(None, 500)
 
-        df = read_csv(DATA_PATH)
-        res = df[(df[TIME_COLUMN] >= from_s) & (df[TIME_COLUMN] <= to_s)]
-        if not len(res):
-            res = df.tail(1)
+        CSV_PATH = DATA_PATH / f"{data}.csv"
+        df = read_csv(CSV_PATH)
+        res = df.tail(1)
 
         return Response(res.to_csv(index=False), mimetype="text/csv")
     except Exception as e:
@@ -34,20 +32,24 @@ def get_data():
         return Response(None, 500)
 
 
-@app.route("/reset-data")
-def reset():
-    def reset_data():
-        global DATA_PATH, PREGENERATED_DATA_PATH
-        with open(DATA_PATH, "w") as data_file:
-            with open(PREGENERATED_DATA_PATH, "r") as pregenerated_file:
-                for line in pregenerated_file:
-                    data_file.write(line)
-                    data_file.flush()
-                    sleep(0.5)
+@app.route("/post", methods = [ "POST" ])
+def post():
+    try:
+        source = request.args.get("source", type=str).lower()
+        if source not in ["posix", "gds", "aisio"]:
+            log.error(f"Wrong source({source})")
+            return Response(None, 500)
 
-    log.info("Resetting data")
-    Thread(target = reset_data).start()
-    return Response("Successfully reset data", 200)
+        data = request.args.get("data", type=str)
+
+        with open(DATA_PATH / f"{source}.csv", "a") as file:
+            file.writelines([data])
+    
+    except Exception as e:
+        log.error(e)
+        return Response(None, 500)
+
+    return Response(None, 200)
 
 
 def setupLogging():
@@ -76,7 +78,7 @@ def parse_args():
         "--data-path", 
         "-d", 
         type=Path, 
-        default=Path("./data.csv"),
+        default=Path("."),
         help="Path to to the data source CSV"
     )
     parser.add_argument(
