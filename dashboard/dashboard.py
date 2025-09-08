@@ -17,19 +17,6 @@ def home():
     return render_template("index.html")
 
 
-@app.route("/reset")
-def reset():
-    try:
-        get("http://posix:4000/reset-data")
-        get("http://gds:4000/reset-data")
-        get("http://aisio:4000/reset-data")
-    except Exception as e:
-        log.error(e)
-        return Response(None, 500)
-
-    return Response(None, 200)
-
-
 def setupLogging():
     logFormatter = log.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
     rootLogger = log.getLogger()

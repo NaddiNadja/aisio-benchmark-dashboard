@@ -7,7 +7,7 @@ HOST = "localhost"
 
 
 def push(source: str):
-  post(f"http://{HOST}/post?source={source}&data=0,0,0,0")
+  post(f"http://{HOST}/post?source={source}&data=0,0,0,0\n")
 
 
 def parse_args():

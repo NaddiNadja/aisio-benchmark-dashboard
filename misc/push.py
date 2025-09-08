@@ -6,6 +6,7 @@ from requests import post
 
 
 HOST = "localhost"
+BATCHES = 300
 
 
 def push(source: str):
@@ -13,8 +14,11 @@ def push(source: str):
   with open(path, "r") as file:
     start = 0
     for line in file.readlines()[1:]:
-      t = float(line.split(",")[0])
-      post(f"http://{HOST}/post?source={source}&data={line}")
+      line = line.split(",")
+      line[1] = str(int(line[1]) / BATCHES * 1000)
+      
+      t = float(line[0])
+      post(f"http://{HOST}/post?source={source}&data={','.join(line)}")
       sleep(t - start)
       start = t
 

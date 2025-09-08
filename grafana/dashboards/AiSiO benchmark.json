@@ -59,7 +59,7 @@
             "mode": "thresholds"
           },
           "mappings": [],
-          "max": 90,
+           "max": 9000,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
@@ -316,7 +316,7 @@
             "mode": "thresholds"
           },
           "mappings": [],
-          "max": 90,
+           "max": 9000,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
@@ -573,7 +573,7 @@
             "mode": "thresholds"
           },
           "mappings": [],
-          "max": 90,
+           "max": 9000,
           "min": 0,
           "thresholds": {
             "mode": "percentage",

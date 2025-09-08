@@ -19,23 +19,6 @@ The `misc/generate-logs.py` helper script can be used to generate artificial log
 `misc/push.py` script can be used to push data from a local file to the data server
 endpoint.
 
-The provided script `run-server.py` can be used to provision a host on a specific port
-(default: 4000).
-
-```sh
-./run-server POSIX
-# or
-./run-server GDS 4001
-```
-
-The `./run-benchmark.sh` script is WIP, but should start the sil benchmarking tool on the
-hosts defined in `.env`. The commands necessary to run on the hosts are:
-
-```sh
-echo 3 > /proc/sys/vm/drop_caches # clear cache
-stdbuf -oL sil <drive> --root-dir train --mnt /mnt/nvme --batch-size 888 --batches 1000 --backend <gds or posix> > /tmp/data-server/data.csv
-```
-
 ## Run
 
 To view the dashboard, run
@@ -45,3 +28,34 @@ docker compose up --build
 ```
 
 and go to `http://localhost`.
+
+### Benchmarking
+
+The `misc/run-benchmark.py` script can be used to run the SIL benchmarking tool and push
+the data to the data-server.
+
+```bash
+usage: run-benchmark [-h] [--dataserver DATASERVER] [--host HOST] [--username USERNAME] [--key_filename KEY_FILENAME] [{posix,gds,aisio}]
+
+positional arguments:
+  {posix,gds,aisio}     Which benchmark to run. (default: aisio)
+
+options:
+  -h, --help            show this help message and exit
+  --dataserver DATASERVER, -d DATASERVER
+                        Hostname of server to push the benchmark results to. (default: localhost)
+  --host HOST           Host on which to run the benchmark. If none given, it is run locally. (default: None)
+  --username USERNAME, -u USERNAME
+                        Username to login with on host. Not necessary if run locally. (default: )
+  --key_filename KEY_FILENAME, -k KEY_FILENAME
+                        Path to a private key which grants access to establish an SSH connection with the host. Not necessary if run locally. (default: )
+```
+
+For example, it can be used as so:
+
+```bash
+python run-benchmark.py aisio -d <host-of-dashboard> --host <host-of-benchmark> -u root -k /path/to/private-key
+```
+
+You can change some parameters in the benchmarking tool, such as the batch size and
+number of batches, in the Python script. The dashboard should adjust automatically.
