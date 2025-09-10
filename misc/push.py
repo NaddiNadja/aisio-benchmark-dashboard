@@ -11,11 +11,15 @@ BATCHES = 300
 
 def push(source: str):
   path = Path(".") / f"{source}.csv"
+
+  post(f"http://{HOST}/post?source={source}&data=0,0,0,0\n")
+  sleep(2)
+
   with open(path, "r") as file:
     start = 0
     for line in file.readlines()[1:]:
       line = line.split(",")
-      line[1] = str(int(line[1]) / BATCHES * 1000)
+      line[1] = str(int(line[1]) / BATCHES * 100)
       
       t = float(line[0])
       post(f"http://{HOST}/post?source={source}&data={','.join(line)}")

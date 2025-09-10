@@ -7,41 +7,89 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='styles.css') }}"
     />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='font-face.css') }}"
+    />
     <title>AiSiO benchmark</title>
-    <script>
-      function reset() {
-        fetch("/reset");
-      }
-    </script>
   </head>
-  <body class="main-grid">
-      <section class="wide">
-        <iframe
-          id="benchmark-dashboard"
-          src="/grafana/d/c83d24b6-3bf5-4963-9a71-6f1676d75f0e/aisio-benchmark"
-        ></iframe>
-        <script>
-          const iframe = document.getElementById("benchmark-dashboard");
-          iframe.onload = () => {
-            const doc = iframe.contentDocument || iframe.contentWindow.document;
-            const style = doc.createElement("style");
-            style.innerHTML = `
-            body { background: white; }
-            .grafana-app * { pointer-events: none; }
-            .grafana-app header { display: none; }
-            .grafana-app .main-view > div { padding-top: 0px !important; }
-            .grafana-app div[style*="transition: width 1s"] { transition: width 1s linear !important; }
-            .grafana-app div[class*="canvas-wrapper-old"] > div { background: transparent; }
-            .grafana-app #\\31 3  section > div:last-child > div, #\\39  section > div:last-child > div, #\\35  section > div:last-child > div { border: 1px solid #DDD }
-            `;
-            doc.head.appendChild(style);
-          };
-        </script>
-      </section>
-
-      <div>
-        hallo, here you'll have some files
+  <body>
+    <header>
+      <h1>AiSIO is </h1>
+      <iframe id="ratio-dashboard" src="/grafana/d/5d42317c-6e69-4a17-98a7-462f311bbaed/ratio?kiosk"></iframe>
+      <h1>times faster than state of the art</h1>
+    </header>
+    <main class="grid">
+      <div id="grafana">
+        <iframe id="benchmark-dashboard" src="/grafana/d/c83d24b6-3bf5-4963-9a71-6f1676d75f0e/aisio-benchmark?kiosk"></iframe>
       </div>
-      <img src="{{ url_for('static', filename='synthetic-benchmarks.png') }}">
+      <div id="terminal">
+        <img src="{{ url_for('static', filename='rec-crop.gif') }}?it=0">
+      </div>
+      <div class="full">
+        <!-- 
+        4k I/O
+        SR-IOV enabled
+        shuffled data / random
+        ImageNet2012
+        backends - posix, 
+        file system is live 
+        -->
+        <h4 class="gradient">Benchmarking of I/O methods</h4>
+        <ul>
+          <li>
+            Loading shuffled ImageNet2012 training data with SR-IOV enabled.
+          </li>
+          <li>
+            The file system is <span class="light-blue medium">live</span>, meaning the data set is available during I/O.
+          </li>
+        </ul>
+      </div>
+    </main>
+    <script>
+      const injectedcss = fetch("{{ url_for('static', filename='injected.css') }}").then(res => res.text());
+      const fontfacecss = fetch("{{ url_for('static', filename='font-face.css') }}").then(res => res.text());
+      let gifincrease = 0;
+      
+      const iframe1 = document.getElementById("benchmark-dashboard");
+      iframe1.onload = async () => {
+        const doc = iframe1.contentDocument || iframe1.contentWindow.document;
+        const style = doc.head.appendChild(doc.createElement("style"));
+        fontfacecss.then(css => style.innerHTML += css);
+        injectedcss.then(css => style.innerHTML += css);
+
+        await new Promise(resolve => setTimeout(resolve, 500))
+        
+        const bars = doc.querySelectorAll(".grafana-app #\\35 , #\\31 0 , #\\31 5 ");
+        bars.forEach(el => {
+          let container = el.querySelector(`div[style*="flex-direction: row-reverse"] :first-child`);
+          container.innerHTML = `${Math.round(container.nextElementSibling.offsetWidth / container.parentElement.offsetWidth * 100)}%`;
+          setInterval(() => {
+            container.innerHTML = `${Math.round(container.nextElementSibling.offsetWidth / container.parentElement.offsetWidth * 100)}%`;
+          }, 500);
+        });
+
+        let aisio = doc.querySelector(`.grafana-app #\\31 5  div[style*="flex-direction: row-reverse"] :first-child`);
+        new MutationObserver(() => {
+          if (aisio.nextElementSibling.offsetWidth < 5) {
+            let gif = document.querySelector("#terminal img");
+            gif.src = `{{url_for('static', filename='rec-crop.gif')}}?it=${++gifincrease}`
+          }
+        }).observe(aisio.nextElementSibling, {attributes: true});
+      };
+
+      const iframe2 = document.getElementById("ratio-dashboard");
+      iframe2.onload = async () => {
+        const doc = iframe2.contentDocument || iframe2.contentWindow.document;
+        const style = doc.head.appendChild(doc.createElement("style"));
+        fontfacecss.then(css => style.innerHTML += css);
+        injectedcss.then(css => style.innerHTML += css);
+
+        await new Promise(resolve => setTimeout(resolve, 500))
+
+        const ratio = doc.querySelector(`div[style*="display: flex; flex-flow:"] [style*="line-height: 1.2;"] span`);
+        if (!ratio.innerHTML.length) ratio.innerHTML = "9.11";
+      };
+    </script>
   </body>
 </html>

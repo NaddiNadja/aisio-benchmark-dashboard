@@ -1,0 +1,76 @@
+:root { 
+  color-scheme: light;
+}
+html, html * { 
+  scrollbar-width: none;
+  font-family: "Samsung Sharp Sans", sans-serif;
+}
+body { 
+  background: transparent;
+}
+#reactRoot {
+  overflow: hidden;
+}
+.grafana-app section { 
+  pointer-events: none;
+}
+[class*="canvas-wrapper-old"] > :first-child {
+  display: none;
+}
+.grafana-app div[style*="transition: width 1s"] {
+  transition: width 1s linear !important;
+}
+
+.grafana-app #\35 , #\31 0 , #\31 5 { 
+  & section > div:last-child > div {
+    border: 1px solid;
+    border-image-source: linear-gradient(90deg,rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.2) 100%);
+    border-image-slice: 1;
+  }
+  & div[style*="flex-direction: row-reverse"] :first-child {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    height: 40px !important;
+    background: transparent !important;
+    color: #4e7186 !important;
+    mix-blend-mode: plus-lighter;
+    font-size: 40px !important;
+    line-height: 46px;
+
+  }
+}
+
+.react-grid-item:has(.markdown-html) section > div:last-child {
+  padding: 0px 8px !important;
+  margin-top: -12px;
+  color: white;
+}
+
+.grafana-app #\32 , #\38 , #\31 3 { 
+  & .markdown-html p {
+    writing-mode: sideways-lr;
+    height: 100%;
+    text-align: center;
+    font-size: 35px;
+    font-weight: 500;
+  }
+}
+
+.grafana-app #\37 , #\31 2 , #\31 7 { 
+  & .markdown-html p {
+    text-align: right;
+  }
+}
+
+div[style*="display: flex; flex-flow:"] [style*="line-height: 1.2;"]:first-child {
+  display: none;
+}
+
+div[style*="display: flex; flex-flow:"] [style*="line-height: 1.2;"] {
+  font-size: 50px !important;
+  font-weight: 700 !important;
+  margin-top: -86px !important;
+} 

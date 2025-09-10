@@ -28,8 +28,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 1,
-        "w": 24,
+        "h": 6,
+        "w": 2,
         "x": 0,
         "y": 0
       },
@@ -40,11 +40,11 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "",
+        "content": "POSIX",
         "mode": "markdown"
       },
       "pluginVersion": "12.2.0-16979757807",
-      "title": "POSIX completion",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -59,25 +59,17 @@
             "mode": "thresholds"
           },
           "mappings": [],
-           "max": 9000,
+          "max": 9000,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
               {
-                "color": "red",
+                "color": "#3990E9",
                 "value": 0
               },
               {
-                "color": "orange",
-                "value": 15
-              },
-              {
-                "color": "#EAB839",
-                "value": 50
-              },
-              {
-                "color": "green",
+                "color": "#4EDBFE",
                 "value": 85
               }
             ]
@@ -88,9 +80,9 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 4,
-        "x": 0,
-        "y": 1
+        "w": 5,
+        "x": 2,
+        "y": 0
       },
       "id": 4,
       "options": {
@@ -154,8 +146,8 @@
       "gridPos": {
         "h": 1,
         "w": 3,
-        "x": 4,
-        "y": 1
+        "x": 7,
+        "y": 0
       },
       "id": 36,
       "options": {
@@ -183,25 +175,25 @@
             "mode": "thresholds"
           },
           "mappings": [],
-          "max": 1000,
+          "max": 100,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
               {
-                "color": "red",
+                "color": "#102246",
                 "value": 0
               },
               {
-                "color": "orange",
-                "value": 30
+                "color": "#1466B8",
+                "value": 1
               },
               {
-                "color": "yellow",
-                "value": 60
+                "color": "#3990E9",
+                "value": 45
               },
               {
-                "color": "green",
+                "color": "#4EDBFE",
                 "value": 90
               }
             ]
@@ -211,13 +203,13 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 20,
-        "x": 4,
-        "y": 2
+        "w": 17,
+        "x": 7,
+        "y": 1
       },
       "id": 1,
       "options": {
-        "displayMode": "basic",
+        "displayMode": "gradient",
         "legend": {
           "calcs": [],
           "displayMode": "list",
@@ -227,7 +219,7 @@
         "maxVizHeight": 300,
         "minVizHeight": 16,
         "minVizWidth": 8,
-        "namePlacement": "auto",
+        "namePlacement": "hidden",
         "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
@@ -280,17 +272,18 @@
       "type": "bargauge"
     },
     {
+      "description": "",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
       },
       "gridPos": {
         "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 7
+        "w": 3,
+        "x": 7,
+        "y": 5
       },
-      "id": 37,
+      "id": 39,
       "options": {
         "code": {
           "language": "plaintext",
@@ -301,7 +294,60 @@
         "mode": "markdown"
       },
       "pluginVersion": "12.2.0-16979757807",
-      "title": "GDS completion",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "description": "test100",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 22,
+        "y": 5
+      },
+      "id": 40,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "",
+        "mode": "markdown"
+      },
+      "pluginVersion": "12.2.0-16979757807",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 2,
+        "x": 0,
+        "y": 6
+      },
+      "id": 37,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "GDS",
+        "mode": "markdown"
+      },
+      "pluginVersion": "12.2.0-16979757807",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -316,25 +362,17 @@
             "mode": "thresholds"
           },
           "mappings": [],
-           "max": 9000,
+          "max": 9000,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
               {
-                "color": "red",
+                "color": "#3990E9",
                 "value": 0
               },
               {
-                "color": "orange",
-                "value": 15
-              },
-              {
-                "color": "#EAB839",
-                "value": 50
-              },
-              {
-                "color": "green",
+                "color": "#4EDBFE",
                 "value": 85
               }
             ]
@@ -345,9 +383,9 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 4,
-        "x": 0,
-        "y": 8
+        "w": 5,
+        "x": 2,
+        "y": 6
       },
       "id": 20,
       "options": {
@@ -404,32 +442,6 @@
       "type": "gauge"
     },
     {
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 1,
-        "w": 3,
-        "x": 4,
-        "y": 8
-      },
-      "id": 39,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "",
-        "mode": "markdown"
-      },
-      "pluginVersion": "12.2.0-16979757807",
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
       "datasource": {
         "type": "yesoreyeram-infinity-datasource",
         "uid": "PD0067CAD9A63E081"
@@ -440,25 +452,25 @@
             "mode": "thresholds"
           },
           "mappings": [],
-          "max": 1000,
+          "max": 100,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
               {
-                "color": "red",
+                "color": "#102246",
                 "value": 0
               },
               {
-                "color": "orange",
-                "value": 30
+                "color": "#1466B8",
+                "value": 1
               },
               {
-                "color": "yellow",
-                "value": 60
+                "color": "#3990E9",
+                "value": 45
               },
               {
-                "color": "green",
+                "color": "#4EDBFE",
                 "value": 90
               }
             ]
@@ -468,13 +480,13 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 20,
-        "x": 4,
-        "y": 9
+        "w": 17,
+        "x": 7,
+        "y": 7
       },
       "id": 22,
       "options": {
-        "displayMode": "basic",
+        "displayMode": "gradient",
         "legend": {
           "calcs": [],
           "displayMode": "list",
@@ -543,11 +555,11 @@
       },
       "gridPos": {
         "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 14
+        "w": 3,
+        "x": 7,
+        "y": 11
       },
-      "id": 38,
+      "id": 35,
       "options": {
         "code": {
           "language": "plaintext",
@@ -558,7 +570,59 @@
         "mode": "markdown"
       },
       "pluginVersion": "12.2.0-16979757807",
-      "title": "AiSiO completion",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 22,
+        "y": 11
+      },
+      "id": 41,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "",
+        "mode": "markdown"
+      },
+      "pluginVersion": "12.2.0-16979757807",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 2,
+        "x": 0,
+        "y": 12
+      },
+      "id": 38,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "AiSIO",
+        "mode": "markdown"
+      },
+      "pluginVersion": "12.2.0-16979757807",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -573,25 +637,17 @@
             "mode": "thresholds"
           },
           "mappings": [],
-           "max": 9000,
+          "max": 9000,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
               {
-                "color": "red",
+                "color": "#3990E9",
                 "value": 0
               },
               {
-                "color": "orange",
-                "value": 15
-              },
-              {
-                "color": "#EAB839",
-                "value": 50
-              },
-              {
-                "color": "green",
+                "color": "#4EDBFE",
                 "value": 85
               }
             ]
@@ -602,9 +658,9 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 4,
-        "x": 0,
-        "y": 15
+        "w": 5,
+        "x": 2,
+        "y": 12
       },
       "id": 21,
       "options": {
@@ -661,32 +717,6 @@
       "type": "gauge"
     },
     {
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 1,
-        "w": 3,
-        "x": 4,
-        "y": 15
-      },
-      "id": 35,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "",
-        "mode": "markdown"
-      },
-      "pluginVersion": "12.2.0-16979757807",
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
       "datasource": {
         "type": "yesoreyeram-infinity-datasource",
         "uid": "PD0067CAD9A63E081"
@@ -697,25 +727,25 @@
             "mode": "thresholds"
           },
           "mappings": [],
-          "max": 1000,
+          "max": 100,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
             "steps": [
               {
-                "color": "red",
+                "color": "#102246",
                 "value": 0
               },
               {
-                "color": "orange",
-                "value": 30
+                "color": "#1466B8",
+                "value": 1
               },
               {
-                "color": "yellow",
-                "value": 60
+                "color": "#3990E9",
+                "value": 45
               },
               {
-                "color": "green",
+                "color": "#4EDBFE",
                 "value": 90
               }
             ]
@@ -725,13 +755,13 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 20,
-        "x": 4,
-        "y": 16
+        "w": 17,
+        "x": 7,
+        "y": 13
       },
       "id": 23,
       "options": {
-        "displayMode": "basic",
+        "displayMode": "gradient",
         "legend": {
           "calcs": [],
           "displayMode": "list",
@@ -792,6 +822,58 @@
       "title": "",
       "transparent": true,
       "type": "bargauge"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 3,
+        "x": 7,
+        "y": 17
+      },
+      "id": 43,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "",
+        "mode": "markdown"
+      },
+      "pluginVersion": "12.2.0-16979757807",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 22,
+        "y": 17
+      },
+      "id": 42,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "",
+        "mode": "markdown"
+      },
+      "pluginVersion": "12.2.0-16979757807",
+      "title": "",
+      "transparent": true,
+      "type": "text"
     }
   ],
   "preload": false,
@@ -816,5 +898,5 @@
   "timezone": "",
   "title": "AiSiO benchmark",
   "uid": "c83d24b6-3bf5-4963-9a71-6f1676d75f0e",
-  "version": 3
+  "version": 37
 }

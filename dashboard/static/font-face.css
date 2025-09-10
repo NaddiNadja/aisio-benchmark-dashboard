@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'Samsung Sharp Sans';
+  src: url('/static/fonts/SamsungSharpSans-Regular.woff') format('woff'),
+       url('/static/fonts/SamsungSharpSans-Regular.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Samsung Sharp Sans';
+  src: url('/static/fonts/SamsungSharpSans-Medium.woff') format('woff'),
+       url('/static/fonts/SamsungSharpSans-Medium.TTF') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+} 
+@font-face {
+  font-family: 'Samsung Sharp Sans';
+  src: url('/static/fonts/SamsungSharpSans-Bold.woff') format('woff'),
+       url('/static/fonts/SamsungSharpSans-Bold.TTF') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+} 

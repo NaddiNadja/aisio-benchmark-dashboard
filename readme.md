@@ -13,7 +13,7 @@ The data server has no data to begin with, but has an endpoint on `/post`, wich 
 - `source`: one of the three tools, `posix`, `gds`, or `aisio`.  Case insensitive.
 - `data`: a single CSV line with 4 comma-separated columns `Time, Batches, IOPS, MiB/s`.
 
-Example: `http://localhost/post?source=posix&data=0,0,0,0`
+Example: `http://localhost/post?source=posix&data=0,0,0,0\n`
 
 The `misc/generate-logs.py` helper script can be used to generate artificial logs, and the
 `misc/push.py` script can be used to push data from a local file to the data server

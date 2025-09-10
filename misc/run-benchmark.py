@@ -12,7 +12,7 @@ BATCHES = 300
 
 DEBUG = True
 RUN_BENCH_CMD = {
-  "posix": f"echo 3 > /proc/sys/vm/drop_caches; stdbuf -oL sil /dev/nvme1n2 --data-dir train --batches {BATCHES} --batch-size {BATCH_SIZE} --mnt /mnt/two --backend posix",
+  "posix": f"echo 3 > /proc/sys/vm/drop_caches; stdbuf -oL sil /dev/nvme1n2 --data-dir train --batches {BATCHES} --batch-size {BATCH_SIZE} --mnt /mnt/two --backend posix --buffered",
   "gds": f"echo 3 > /proc/sys/vm/drop_caches; stdbuf -oL sil /dev/nvme1n2 --data-dir train --batches {BATCHES} --batch-size {BATCH_SIZE} --mnt /mnt/two --backend gds",
   "aisio": f"echo 3 > /proc/sys/vm/drop_caches; stdbuf -oL sil /dev/libnvm0 --data-dir train --batches {BATCHES} --batch-size {BATCH_SIZE} --gpu-nqueues 6 --backend libnvm-gpu",
 }
@@ -27,7 +27,7 @@ def run(args: dict):
       return
     
     line = line.split(",")
-    line[1] = str(int(line[1]) / BATCHES * 1000)
+    line[1] = str(int(line[1]) / BATCHES * 100)
 
     post(f"http://{args.dataserver}/post?source={args.source}&data={','.join(line)}")
 

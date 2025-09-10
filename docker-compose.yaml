@@ -7,6 +7,10 @@ services:
       - "3010:3010"
     networks:
       - internal
+    volumes:
+      - ./dashboard/templates/index.html:/app/templates/index.html
+      - ./dashboard/static/styles.css:/app/static/styles.css
+      - ./dashboard/static/injected.css:/app/static/injected.css
 
   grafana:
     image: grafana/grafana-enterprise
@@ -31,7 +35,6 @@ services:
       - "4000:4000"
     networks:
       - internal
-
   nginx:
     image: nginx:latest
     container_name: nginx

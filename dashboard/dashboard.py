@@ -6,6 +6,7 @@ from requests import get
 
 
 app = Flask(__name__)
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 DATA_PATH: Path = Path("./data.csv")
 TIME_COLUMN: str = "time"
