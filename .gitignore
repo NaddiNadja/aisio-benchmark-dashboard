@@ -4,3 +4,4 @@ logs/
 *.csv
 *.log
 .env
+.DS_Store
