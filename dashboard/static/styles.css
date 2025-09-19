@@ -17,7 +17,7 @@ body {
   background-image: linear-gradient(rgba(0 0 0 / 0.5)), url(/static/background.png);
   background-color: white;
   color: rgb(17, 18, 23);
-  padding: 80px 50px;
+  padding: 60px 50px;
   background-size: cover;
 }
 
@@ -25,7 +25,7 @@ header {
   display: flex;
   align-items: center;
   font-family: Arial, sans-serif;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 }
 h1 {
   color: white;  margin-top: 36px;
@@ -97,11 +97,18 @@ img {
   width: fit-content;
 }
 
-.grid .full h4 {
-  font-size: 24px;
-  margin-left: 40px;
+.grid div:has(h4) {
+  align-content: baseline;
+  padding: 40px;
 }
-.grid .full ul {
+.grid h4 {
+  font-size: 24px;
+  margin: 0;
+}
+.grid p {
   font-size: 18px;
   line-height: 1.5;
+}
+p:last-child {
+  margin-bottom: 0;
 }

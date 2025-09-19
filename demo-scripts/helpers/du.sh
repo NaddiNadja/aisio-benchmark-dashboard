@@ -5,8 +5,8 @@ source $SRC/util.sh
 
 printcmd "du -h --max-depth=1"
 
-res1=$(du -h --max-depth=1 | head -n 11)
-res2=$(du -h --max-depth=1 | tail -n 11)
+res1=$(du -h --max-depth=1 | head -n 10)
+res2=$(du -h --max-depth=1 | tail -n 10)
 
 echo "$res1"
 echo "     [...]"

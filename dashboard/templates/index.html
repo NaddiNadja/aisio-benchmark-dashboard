@@ -23,10 +23,15 @@
       <div id="grafana">
         <iframe id="benchmark-dashboard" src="/grafana/d/c83d24b6-3bf5-4963-9a71-6f1676d75f0e/aisio-benchmark?kiosk"></iframe>
       </div>
-      <div id="terminal">
-        <img src="{{ url_for('static', filename='rec-crop.gif') }}?it=0">
+      <div>
+        <iframe id="terminal"></iframe>
+        <script>
+          const iframeSrc = `http://${window.location.hostname}:8910`;
+          document.getElementById('terminal').src = iframeSrc;
+        </script>
+        <!-- <img src="{{ url_for('static', filename='rec-crop.gif') }}?it=0"> -->
       </div>
-      <div class="full">
+      <div>
         <!-- 
         4k I/O
         SR-IOV enabled
@@ -35,15 +40,29 @@
         backends - posix, 
         file system is live 
         -->
-        <h4 class="gradient">Benchmarking of I/O methods</h4>
-        <ul>
-          <li>
-            Loading shuffled ImageNet2012 training data with SR-IOV enabled.
-          </li>
-          <li>
-            The file system is <span class="light-blue medium">live</span>, meaning the data set is available during I/O.
-          </li>
-        </ul>
+        <h4 class="gradient">AiSIO: Accelerator-initiated Storage I/O</h4>
+        <p>
+          This demo runs a data loader benchmark using the ImageNet dataset to
+          showcase AiSIO's breakthrough in GPU-optimized storage. As 
+          <span class="medium gradient">1.2 million</span> small files stream in,
+          progress bars track execution while the bandwidth gauges compare
+          POSIX, GDS, and AiSIO performance. 
+        </p>
+        <p>
+          Terminal commands reveal the dataset structure and demonstrate the ability
+          of AiSIO to keep the <br><span class="medium gradient">file system 
+          mounted</span> while the GPU processes data. This is possible with
+          hardware multi-path via SR-IOV.
+        </p>
+      </div>
+      <div>
+        <h4 class="gradient">The future of AI</h4>
+        <p>
+          Small-file I/O is a critical bottleneck in AI training and inference
+          workloads, especially with datasets like ImageNet. AiSIO addresses this
+          challenge head-on, delivering <span class="medium gradient">scalable 
+          performance</span> without sacrificing file system compatibility.
+        </p>
       </div>
     </main>
     <script>

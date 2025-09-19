@@ -1,7 +1,8 @@
 #! /bin/bash
 
 TMP_FILE="/tmp/pane_done"
-ZELLIJ_ARGS="action new-pane --close-on-exit --floating --width 99% --height 27 -x 1 -y 9"
+ZELLIJ_ARGS="action new-pane --floating --width 77% --height 77% -x 1 -y 25% --close-on-exit"
+TRAINING_DATA="/mnt/two/train"
 
 
 typeout () {

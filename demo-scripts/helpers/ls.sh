@@ -5,8 +5,8 @@ source $SRC/util.sh
 
 printcmd "ls -lh n03447721"
 
-res1=$(ls -lh n03447721 | head -n 11)
-res2=$(ls -lh n03447721 | tail -n 11)
+res1=$(ls -lh n03447721 | head -n 10)
+res2=$(ls -lh n03447721 | tail -n 10)
 
 echo "$res1"
 echo "     [...]"

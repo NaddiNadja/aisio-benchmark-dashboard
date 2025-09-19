@@ -7,10 +7,11 @@ from requests import post
 
 HOST = "localhost"
 BATCHES = 300
+PRETTY_NAME = {"aisio": "AiSIO", "gds": "GDS", "posix": "POSIX"}
 
 
 def push(source: str):
-  path = Path(".") / f"{source}.csv"
+  path = Path(__file__).parent / f"{source}.csv"
 
   post(f"http://{HOST}/post?source={source}&data=0,0,0,0\n")
   sleep(2)
@@ -25,6 +26,8 @@ def push(source: str):
       post(f"http://{HOST}/post?source={source}&data={','.join(line)}")
       sleep(t - start)
       start = t
+
+    print(f"\n{PRETTY_NAME[source]} done in {t:.1f}s")
 
 
 def parse_args():
