@@ -23,8 +23,13 @@
       <div id="grafana">
         <iframe id="benchmark-dashboard" src="/grafana/d/c83d24b6-3bf5-4963-9a71-6f1676d75f0e/aisio-benchmark?kiosk"></iframe>
       </div>
-      <div id="terminal">
-        <img src="{{ url_for('static', filename='rec-crop.gif') }}?it=0">
+      <div>
+        <iframe id="terminal"></iframe>
+        <script>
+          const iframeSrc = `http://${window.location.hostname}:8910`;
+          document.getElementById('terminal').src = iframeSrc;
+        </script>
+        <!-- <img src="{{ url_for('static', filename='rec-crop.gif') }}?it=0"> -->
       </div>
       <div class="full">
         <!-- 

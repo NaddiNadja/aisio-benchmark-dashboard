@@ -1,39 +1,23 @@
 #! /bin/bash
 
+SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+source $SRC/util.sh
+
+
 cleanup() {
     [ -f "$TMP_FILE" ] && rm $TMP_FILE
-    [ -f "/tmp/demo_done" ] && rm /tmp/demo_done
 }
 trap cleanup EXIT SIGINT
 
-SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
-source $SRC/helpers/util.sh
 
-# 
-$SRC/helpers/intro-screen.sh
-
-clear
-
-#
-echo
-sleep 1
-
-typeout "Let's run the demo!"
-
-zellij action new-pane --floating --width 20% --height 95% -x 79% -y 2 --close-on-exit --name "Benchmark demo" -- "$SRC/helpers/push-prerecorded.sh"
-
-#
-sleep 2
-
-printandeval "clear"
-cd $TRAINING_DATA
+printandeval "cd $TRAINING_DATA && clear"
 
 # Screen 2
 sleep 1
 
 typeout "The training data is located in [1;31m1000[0m directories of varying sizes."
 
-run_zellij "Training data directories" "$SRC/helpers/du.sh"
+run_zellij "Training data directories" "$SRC/du.sh"
 
 echo
 printandeval "clear"
@@ -46,7 +30,7 @@ typeout "Most files are quite small - the average file size is around [1;31m112
 sleep 1
 typeout "Let's take a look at some of them ..."
 
-run_zellij "Files in the data set" "$SRC/helpers/ls.sh"
+run_zellij "Files in the data set" "$SRC/ls.sh"
 
 echo
 printandeval "clear"
@@ -58,7 +42,7 @@ sleep 1
 typeout "The file system is live."
 typeout "With AiSIO, the [1;31m1281167[0m files in the data set are available during I/O."
 
-run_zellij "Data set tree" "$SRC/helpers/tree.sh"
+run_zellij "Data set tree" "$SRC/tree.sh"
 
-#
-$SRC/helpers/outro-screen.sh
+echo
+printandeval "clear"

@@ -9,6 +9,7 @@ from subprocess import Popen, PIPE, STDOUT
 
 BATCH_SIZE = 4096
 BATCHES = 300
+PRETTY_NAME = {"aisio": "AiSIO", "gds": "GDS", "posix": "POSIX"}
 
 DEBUG = True
 RUN_BENCH_CMD = {
@@ -65,21 +66,6 @@ def run(args: dict):
   return 0
 
 
-def setupLogging():
-  logFormatter = log.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s] %(message)s")
-  rootLogger = log.getLogger()
-
-  fileHandler = log.FileHandler(f"./benchmark.log")
-  fileHandler.setFormatter(logFormatter)
-  fileHandler.setLevel(log.INFO)
-  rootLogger.addHandler(fileHandler)
-
-  consoleHandler = log.StreamHandler(stream=sys.stderr)
-  consoleHandler.setFormatter(logFormatter)
-  consoleHandler.setLevel(log.ERROR)
-  rootLogger.addHandler(consoleHandler)
-
-
 def parse_args():
   parser = ArgumentParser(
     prog=Path(sys.argv[0]).stem,
@@ -123,7 +109,6 @@ def parse_args():
 
 
 if __name__ == "__main__":
-  setupLogging()
   args = parse_args()
-  print(f"Running {args.source} benchmarks")
+  print(f"Running {PRETTY_NAME[args.source]} benchmarks")
   run(args)
